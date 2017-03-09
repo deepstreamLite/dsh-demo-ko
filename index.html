@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>deepstreamHub demo simple app with knockout</title>
+
+	<link rel="stylesheet" type="text/css" href="css/screen.css" />
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+	<script type="text/javascript" src="bower_components/deepstream.io-tools-ko/dist/ko-tools.js"></script>
+	<script type="text/javascript" src="https://code.deepstreamhub.com/js/latest/deepstream.min.js"></script>
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+	<script type="text/javascript" src="src/start-ko.js"></script>
+
+</head>
+<body>
+	<div id="wrapper">
+		<div class="col left">
+			<ul class="users" data-bind="foreach: users.entries">
+				<li data-bind="css:{ active: isActive }, click: $parent.selectUser.bind($parent)">
+					<em>
+						<span data-bind="text:firstname"></span>
+						<span data-bind="text:lastname"></span>
+					</em>
+					<span data-bind="text:title"></span>
+					<div class="delete-button fa fa-remove" data-bind="click: deleteUser"></div>
+				</li>
+			</ul>
+			<div class="addUser" data-bind="click: addUser"><i class="fa fa-plus"></i>  <span>add user</span></div>
+		</div>
+		<div class="col right">
+
+			<fieldset>
+				<legend>General data</legend>
+				<ul class="fields">
+					<li>
+						<label>Firstname</label>
+						<input data-bind="textInput: user.firstname" id="firstname" type="text" />
+					</li>
+					<li>
+						<label>Lastname</label>
+						<input data-bind="textInput: user.lastname" id="lastname" type="text" />
+					</li>
+					<li>
+						<label>Title</label>
+						<input data-bind="textInput: user.title" id="title" type="text" />
+					</li>
+				</ul>
+			</fieldset>
+
+			<fieldset>
+				<legend>Address</legend>
+				<ul class="fields">
+					<li>
+						<label>Street</label>
+						<input data-bind="textInput: user.street" id="street" type="text" />
+					</li>
+					<li>
+						<label>Nr</label>
+						<input data-bind="textInput: user.number" id="number" type="text" />
+					</li>
+					<li>
+						<label>Post Code</label>
+						<input data-bind="textInput: user.postcode" id="postcode" type="text" />
+					</li>
+					<li>
+						<label>City</label>
+						<input data-bind="textInput: user.city" id="city" type="text" />
+					</li>
+				</ul>
+			</fieldset>
+		</div>
+	</div>
+</body>
+<!-- Angular
+<body ng-app="ds-demo" ng-controller="user">
+	<input type="text" class="firstname" ng-model="user.firstname" />
+	<input type="text" class="lastname" ng-model="user.lastname" />
+
+	<button type="button" ng-click="showUser('user/wolfram')">Wolfram</button>
+	<button type="button" ng-click="showUser('user/arthur')">Arthur</button>
+</body>
+-->
+</html>
